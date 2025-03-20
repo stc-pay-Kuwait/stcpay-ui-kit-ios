@@ -70,3 +70,6 @@ struct ContentView: View {
  }
 }
 ```
+
+![Buttons](./screenshots/buttons.png)
+![TextFields](./screenshots/textfields.png)
