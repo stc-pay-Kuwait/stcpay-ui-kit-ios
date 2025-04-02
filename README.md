@@ -87,7 +87,7 @@ var body: some View {
     }
 ```
 
-| Buttons | Textfields |
-|---------|------------|
+| Buttons | Textfields | OptionFields |
+|---------|------------|--------------|
 | ![Buttons](./screenshots/button.png) | ![TextFields](./screenshots/textfield.png) | ![OptionFields](./screenshots/optionfields.png) |
 
