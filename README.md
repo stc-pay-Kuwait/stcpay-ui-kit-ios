@@ -1,5 +1,5 @@
 # MySwiftPackage
-A Swift Package that provides reusable SwiftUI button and text field modifiers with customizable styles, including filled, bordered, and disabled states.
+A Swift Package for reusable SwiftUI components, including button and text field modifiers with customizable styles, as well as custom views for Toggle, Checkbox, and Radio Button.
 
 ## Features
 
@@ -7,6 +7,7 @@ A Swift Package that provides reusable SwiftUI button and text field modifiers w
 - **Customizable Button Modifiers:** Background, Border, and Text Colors
 - **Buttons with Icons:** Support for left or right-positioned icons
 - **Custom TextField Styles:** Adds padding, rounded borders, and optional icons
+- **Custom Views for Selection Controls:** Reusable Toggle, Checkbox, and Radio Button components
 
 
 
@@ -20,25 +21,29 @@ CustomModifiers provides easy-to-use button styles with different designs.
 
 ### 🚀 Basic Button Styles
 ```swift
-Button("Submit") { }
- .primaryButtonStyles(.filled())
-
-Button("Submit") { }
- .primaryButtonStyles(.bordered())
-
-Button("Submit") { }
- .primaryButtonStyles(.disabled())
-
-// Button with Left Icon
-Button("") { }
-    .buttonWithImageStyle(.bordered(), image: Image(systemName: "star.fill"))
-
-// Button with Right Icon
-Button("Sign Up") {
-    print("Click Me")
-}
-.buttonWithImageStyle(.bordered(), image: Image(systemName: "person.fill"), imagePosition: .right)
-.frame(width: 250, height: 50)
+var body: some View {
+        VStack(spacing: 10){
+            Button("Continue"){ }
+                .primaryButtonStyles(.filled())
+            
+            Button("Skip and verify later"){ }
+                .primaryButtonStyles(.bordered())
+ 
+            Button(""){ }
+                .buttonWithImageStyle(.bordered(), image: Image(systemName: "star.fill"))
+            
+            Button("Sign Up"){
+                print("Click Me")
+            }.buttonWithImageStyle(.bordered(), image: Image(systemName: "person.fill"), imagePosition: .right)
+                .frame(width: 250, height: 50)
+            
+            Button("Sign In"){
+                print("Click Me")
+            }.buttonWithImageStyle(.filled(), image: Image(systemName: "person.fill"), imagePosition: .left)
+                .frame(width: 250, height: 50)
+            
+        }.padding(.horizontal, 20)
+    }
 ```
 
 
@@ -47,29 +52,41 @@ Button("Sign Up") {
 Use `textFieldModifier` to enhance your **TextField** with a clean design, including optional left and right icons.
 
 ```swift
-import SwiftUI
-import CustomModifiers
-
-struct ContentView: View {
  @State private var text: String = ""
  @State private var pass: String = ""
 
- var body: some View {
-     VStack(spacing: 20) {
-         // TextField with Left Icon
-         TextField("Enter your username", text: $text)
-             .textFieldModifier(.default, iconLeft: Image(systemName: "person.fill"))
-             .padding(.vertical, 10)
-
-         // SecureField with Left and Right Icons
-         SecureField("Enter your password", text: $pass)
-             .textFieldModifier(.default, iconLeft: Image(systemName: "lock.fill"), iconRight: Image(systemName: "eye"))
-             .padding(.vertical, 10)
-     }
-     .padding()
- }
-}
+var body: some View {
+        VStack(spacing: 20){
+            TextField("Enter your name", text: $text)
+                .textFieldModifier(.default)
+            
+            TextField("Enter your email", text: $text)
+                .textFieldModifier(.default, iconLeft: Image("mail_icon"))
+            
+            SecureField("Enter your password", text: $pass)
+                .textFieldModifier(.default, iconLeft: Image(systemName: "lock.fill"), iconRight: Image(systemName: "eye"))
+        }.padding(25)
+    }
 ```
+
+### Styled TextFields
+
+Use options fields to create the fields for ToggleView, CheckBox and Radio Button.
+
+```swift
+@State var isToggleOn = false
+@State var selectedRadioID: String? = nil
+@State var isSelected: Bool = false
+
+var body: some View {
+        VStack(spacing: 20){
+           ToggleView(title: "This is Toggle View", isOn: $isToggleOn)
+           CheckboxView(title: "This is Checkbox View", isSelected: $isSelected)
+           RadioButton(title: "This is Radio Button View",  id: "1", selectedID: $selectedRadioID)
+        }.padding(25)
+    }
+```
+
 | Buttons | Textfields |
 |---------|------------|
 | ![Buttons](./screenshots/buttons.png) | ![TextFields](./screenshots/textfields.png) |
