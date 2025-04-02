@@ -89,5 +89,5 @@ var body: some View {
 
 | Buttons | Textfields |
 |---------|------------|
-| ![Buttons](./screenshots/buttons.png) | ![TextFields](./screenshots/textfields.png) |
+| ![Buttons](./screenshots/buttons.png) | ![TextFields](./screenshots/textfield.png) | ![TextFields](./screenshots/optionfields.png) |
 
