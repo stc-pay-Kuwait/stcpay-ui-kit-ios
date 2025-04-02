@@ -19,41 +19,61 @@ public struct TextfieldModifier: ViewModifier{
                 iconLeft
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 20, height: 20)
+                    .frame(width: 15, height: 15)
                     .foregroundColor(textFieldStyle.textColor)
                     .lineLimit(1)
-                    .padding(.leading, 5)
+                    .padding(.leading, 16)
             }
             content
-                .foregroundColor(textFieldStyle.borderColor)
-                .padding(.horizontal, 10)
+                .foregroundColor(textFieldStyle.textColor)
+                .appFont(.stcForward(.regular, size: 16))
+                .padding(.leading, (iconLeft == nil) ? 16 : 2)
+                //.padding()
+                .frame(height: 50)
             
             if let iconRight = iconRight{
                 iconRight
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 20, height: 20)
+                    .frame(width: 15, height: 15)
                     .foregroundColor(textFieldStyle.textColor)
                     .lineLimit(1)
-                    .padding(.trailing, 5)
+                    .padding(.trailing, 16)
             }
         }
-        .padding()
-        .background(Color.clear)
-        .overlay (
-            RoundedRectangle(cornerRadius: textFieldStyle.borderRadius).stroke(textFieldStyle.borderColor, lineWidth: 1)
-        )
+        .background(textFieldStyle.backgroundColor)
         .cornerRadius(cornerRadius)
-        
+        .shadow(color: .borderShadow.opacity(0.05), radius: 2, x: 0, y: 1)
+        .overlay(
+            RoundedRectangle(cornerRadius: cornerRadius)
+                .stroke(textFieldStyle.borderColor, lineWidth: 1)
+        )
     }
 }
 
 public extension View{
-    func textFieldModifier(_ style: TextFieldStyles,
-        cornerRadius: CGFloat = 5,
-                      padding: CGFloat = 5,
-                      iconLeft: Image? = nil,
-                      iconRight: Image? = nil) -> some View {
-        modifier(TextfieldModifier(textFieldStyle: style ,cornerRadius: cornerRadius, padding: padding, iconLeft: iconLeft, iconRight: iconRight))
+    func textFieldModifier(
+        _ style: TextFieldStyles,
+        cornerRadius: CGFloat = 8,
+        padding: CGFloat = 10,
+        iconLeft: Image? = nil,
+        iconRight: Image? = nil
+    ) -> some View {
+        modifier(TextfieldModifier(
+            textFieldStyle: style,
+            cornerRadius: cornerRadius,
+            padding: padding,
+            iconLeft: iconLeft,
+            iconRight: iconRight
+        ))
     }
 }
+
+public extension Text{
+    func promptTextModifier() -> Text {
+        self
+            .appFont(.stcForward(.regular, size: 16))
+            .foregroundColor(Color.tfPlaceholderGray)
+    }
+}
+

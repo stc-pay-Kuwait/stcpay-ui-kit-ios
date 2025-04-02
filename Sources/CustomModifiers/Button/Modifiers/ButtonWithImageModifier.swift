@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-
 public struct ButtonWithImageModifier: ViewModifier {
     var buttonStyle: ButtonStyles
     var cornerRadius: CGFloat
@@ -28,6 +27,7 @@ public struct ButtonWithImageModifier: ViewModifier {
                 }
                 
                 content
+                    .appFont(.stcForward(.medium, size: 16))
                     .foregroundColor(buttonStyle.textColor)
                 
                 if imagePosition == .right, let image = image {
@@ -40,15 +40,32 @@ public struct ButtonWithImageModifier: ViewModifier {
                 }
             }
             .padding(padding)
-            .frame(maxWidth: .infinity)
+            .frame(maxWidth: .infinity, maxHeight: 50)
             .background(buttonStyle.backgroundColor)
             .overlay(
+                
                 RoundedRectangle(cornerRadius: cornerRadius)
-                    .stroke(buttonStyle.hasBorder ? buttonStyle.borderColor : Color.clear, lineWidth: buttonStyle.hasBorder ? 2 : 0)
+                    .stroke(
+                        buttonStyle.hasBorder ?
+                        AnyShapeStyle(buttonStyle.borderColor) :
+                            AnyShapeStyle(LinearGradient(
+                                gradient: Gradient(colors: [
+                                    Color.white.opacity(0.12), // 12% opacity
+                                    Color.white.opacity(0.0)   // 0% opacity
+                                ]),
+                                startPoint: .topLeading,
+                                endPoint: .bottomTrailing
+                            )),
+                        lineWidth: buttonStyle.hasBorder ? 1 : 2
+                    )
             )
             .cornerRadius(cornerRadius)
             .opacity(buttonStyle.buttonOpacity)
-            .shadow(color: buttonStyle.shadowColor, radius: buttonStyle.shadowRadius, x: 2, y: 2)
+            .shadow(
+                color: buttonStyle.shadowColor.opacity(0.05), // Shadow color with opacity
+                radius: buttonStyle.shadowRadius, // Shadow blur radius
+                x: 0, y: 1 // Shadow position (from Figma: X=0, Y=1)
+            )
         }
     }
 }

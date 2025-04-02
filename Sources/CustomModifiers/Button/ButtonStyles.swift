@@ -7,14 +7,14 @@
 
 import SwiftUI
 public enum ButtonStyles {
-    case filled(background: Color = .green, textColor: Color = .white, opacity: Double = 1.0, shadow: Color = .gray, radius: CGFloat = 5)
-    case bordered(borderColor: Color = .green, textColor: Color = .green, background: Color = .clear, opacity: Double = 1.0, shadow: Color = .clear, radius: CGFloat = 5)
-    case disabled(background: Color = .green, textColor: Color = .white, opacity: Double = 0.7, shadow: Color = .clear, radius: CGFloat = 5)
+    case filled(background: Color = .stPrimaryOsais, textColor: Color = .white, opacity: Double = 1.0, shadow: Color = .stBorderShadow, radius: CGFloat = 8, borderColor: Color = .stPrimaryOsais)
+    case bordered(borderColor: Color = .stPrimaryOsais, textColor: Color = .stPrimaryOsais, background: Color = .white, opacity: Double = 1.0, shadow: Color = .stBorderShadow, radius: CGFloat = 8)
+    case disabled(background: Color = .stPrimaryOsais, textColor: Color = .white, opacity: Double = 0.7, shadow: Color = .clear, radius: CGFloat = 5)
 
     /// Background color based on style
     var backgroundColor: Color {
         switch self {
-        case .filled(let background, _, let opacity, _, _),
+        case .filled(let background, _, let opacity, _, _, _),
              .bordered(_, _, let background, let opacity, _, _),
              .disabled(let background, _, let opacity, _, _):
             return background.opacity(opacity)
@@ -24,7 +24,7 @@ public enum ButtonStyles {
     /// Foreground (text) color
     var textColor: Color {
         switch self {
-        case .filled(_, let textColor, _, _, _),
+        case .filled(_, let textColor, _, _, _, _),
              .bordered(_, let textColor, _, _, _, _),
              .disabled(_, let textColor, _, _, _):
             return textColor
@@ -34,7 +34,7 @@ public enum ButtonStyles {
     // Shadow (button) color
     var shadowColor: Color {
         switch self {
-        case .filled(_, _, _, let shadow, _),
+        case .filled(_, _, _, let shadow, _, _),
              .bordered(_, _, _, _, let shadow, _),
              .disabled(_, _, _, let shadow, _):
             return shadow
@@ -44,7 +44,7 @@ public enum ButtonStyles {
     // Shadow (text) color
     var shadowRadius: CGFloat {
         switch self {
-        case .filled(_, _, _, _, let radius),
+        case .filled(_, _, _, _, let radius, _),
              .bordered(_, _, _, _, _, let radius),
              .disabled(_, _, _, _, let radius):
             return radius
@@ -54,7 +54,8 @@ public enum ButtonStyles {
     /// Border color
     var borderColor: Color {
         switch self {
-        case .bordered(let borderColor, _, _, _, _, _): return borderColor
+        case .filled(_, _, _, _, _, let borderColor),
+             .bordered(let borderColor, _, _, _, _, _): return borderColor
         default: return .clear
         }
     }
@@ -62,7 +63,7 @@ public enum ButtonStyles {
     /// Opacity for the button (disabled state handling)
     var buttonOpacity: Double {
         switch self {
-        case .filled(_, _, let opacity, _, _),
+        case .filled(_, _, let opacity, _, _, _),
              .bordered(_, _, _, let opacity, _, _),
              .disabled(_, _, let opacity, _, _):
             return opacity

@@ -10,18 +10,18 @@ public enum TextFieldStyles {
     case `default`
     
     var backgroundColor: Color {
-        return .clear
+        return .white
     }
     
     var borderColor: Color {
-        return .green
+        return .borderGrayPrimary
     }
     
     var textColor: Color {
-        return .black
+        return .tfPlaceholderGray
     }
     
     var borderRadius: CGFloat {
-        return 5
+        return 8
     }
 }
