@@ -156,6 +156,6 @@ Content.
 
 | HeaderView | Option Sheet | Alert Sheet |
 |---------|------------|--------------|
-| ![Buttons](./screenshots/button.png) | ![TextFields](./screenshots/textfield.png) | ![OptionFields](./screenshots/optionfields.png) |
+| ![Buttons](./screenshots/HeaderView.png) | ![TextFields](./screenshots/OptionsSheet.png) | ![OptionFields](./screenshots/AlertSheet.png) |
 
 
