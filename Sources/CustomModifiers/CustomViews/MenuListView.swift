@@ -31,7 +31,9 @@ public struct MenuListView: View {
                 Text(title)
                     .appFont(.stcForward(.medium, size: 18))
                     .foregroundColor(Color.darkGrayTitleColor)
+                
                 Spacer()
+                
                     Button(action: onDismiss) {
                         Image("cross_icon")
                             .resizable()
@@ -55,6 +57,7 @@ public struct MenuListView: View {
                         Text(item.title)
                             .appFont(.stcForward(.medium, size: 16))
                             .foregroundColor(Color.grayIconColor)
+                        
                         Spacer()
                     }
                     .padding(.vertical, 12)
@@ -62,8 +65,6 @@ public struct MenuListView: View {
                 }
                 Divider()
             }
-
-            Spacer(minLength: 12)
         }
         .background(Color.white)
     }

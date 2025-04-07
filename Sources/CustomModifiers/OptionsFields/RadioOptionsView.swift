@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct RadioOptionsView: View {
+public struct RadioOptionsView: View {
     let title: String
     let id: String
     @Binding var selectedID: String?
@@ -68,10 +68,4 @@ struct RadioOptionsView: View {
 #Preview {
     @State var selectedRadioID: String?
     RadioOptionsView(title: "Enable Notifications Enable Notifications Enable Notifications Enable Notifications Enable Notifications Enable Notifications",  id: "option3", selectedID: $selectedRadioID)
-}
-
-extension String {
-    public var isSingleLine: Bool {
-        self.count < 30
-    }
 }

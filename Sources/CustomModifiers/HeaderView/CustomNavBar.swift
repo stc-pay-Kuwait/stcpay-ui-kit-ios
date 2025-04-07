@@ -5,9 +5,7 @@
 //  Created by Waqas Ahmed on 06/04/2025.
 //
 
-import Foundation
 import SwiftUI
-import CustomModifiers
 public struct CustomNavBar: View {
     public var showBackButton: Bool
     public var onBack: (() -> Void)?
@@ -56,13 +54,4 @@ public struct CustomNavBar: View {
             }.frame(width: .infinity, height: 20)
         }
     }
-}
-
-#Preview {
-    CustomNavBar(
-        showBackButton: true,
-        onBack: { print("Back tapped") },
-        showOptionsButton: true,
-        onMenuIconTap: {print("Menu tappad")}
-    )
 }

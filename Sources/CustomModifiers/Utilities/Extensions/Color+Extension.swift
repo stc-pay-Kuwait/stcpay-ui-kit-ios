@@ -6,9 +6,24 @@
 //
 import SwiftUI
 
+public enum AppType : Sendable {
+    case bahrain
+    case kuwait
+}
+
+public final class CustomModifiersAppType: @unchecked Sendable {
+    public static let shared = CustomModifiersAppType()
+    public private(set) var appType: AppType = .bahrain
+    private init() {}
+    public func setAppType(_ newAppType: AppType) {
+        self.appType = newAppType
+    }
+}
+
 public extension Color {
     static var stPrimaryOsais: Color {
-        Color("AccentColor", bundle: .module)
+        CustomModifiersAppType.shared.appType == .bahrain ? Color("AccentColor", bundle: .module) : Color("AccentColor", bundle: .module)
+        //Color("borderShadow", bundle: .module)
     }
     static var stBorderShadow: Color{
         Color("borderShadow", bundle: .module)
@@ -30,6 +45,12 @@ public extension Color {
     }
     static var borderGrayPrimary: Color {
         Color("borderGrayPrimary", bundle: .module)
+    }
+    static var darkGrayTitleColor: Color {
+        Color("darkGrayTitleColor", bundle: .module)
+    }
+    static var grayIconColor: Color {
+        Color("grayIconColor", bundle: .module)
     }
 }
 

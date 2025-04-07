@@ -66,11 +66,7 @@ public struct CheckboxView: View {
     }
 }
 
-extension String {
-    var isSingleLine: Bool {
-        self.count < 30 // Adjust this threshold based on your layout
-    }
-}
+
 
 //#Preview {
 //    @Previewable @State var isSelected: Bool = false

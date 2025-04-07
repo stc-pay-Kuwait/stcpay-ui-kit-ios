@@ -6,19 +6,17 @@
 //
 
 import SwiftUI
-import CustomModifiers
 
 public struct CustomTitleBar: View {
     public var title: String?
     public var subtitle: String?
     
-    init(title: String? = nil, subtitle: String? = nil) {
+    public init(title: String? = nil, subtitle: String? = nil) {
         self.title = title
         self.subtitle = subtitle
     }
     
     public var body: some View {
-        // Title and Subtitle (centered)
         if title != nil || subtitle != nil {
             VStack(alignment: .leading, spacing: 10) {
                 if let title = title{
@@ -30,19 +28,19 @@ public struct CustomTitleBar: View {
                         .subtitleTextStyle()
                 }
             }
-            .frame(width: .infinity, alignment: .leading)
+            .frame(maxWidth: .infinity, alignment: .leading)
         }
     }
 }
 
-#Preview {
-    VStack(alignment: .leading, spacing: 10){
-        CustomTitleBar(title: "Enter your mobile number",
-                       subtitle: "A verification code will be sent to the mobile number, A verification code will be sent to the mobile numberA verification code")
-        
-        CustomTitleBar(title: "Enter your mobile number")
-        
-        CustomTitleBar(subtitle: "Enter your mobile number Enter your mobile number")
-        
-    }
-}
+//#Preview {
+//    VStack(alignment: .leading, spacing: 10){
+//        CustomTitleBar(title: "Enter your mobile number",
+//                       subtitle: "A verification code will be sent to the mobile number, A verification code will be sent to the mobile numberA verification code")
+//        
+//        CustomTitleBar(title: "Enter your mobile number")
+//        
+//        CustomTitleBar(subtitle: "Enter your mobile number Enter your mobile number")
+//        
+//    }
+//}

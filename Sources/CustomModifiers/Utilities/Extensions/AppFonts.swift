@@ -9,8 +9,8 @@ import SwiftUI
 #if canImport(UIKit)
 import UIKit
 #endif
-enum AppFont {
-    enum Weight: String {
+public enum AppFont {
+   public enum Weight: String {
         case regular = "Regular"
         case bold = "Bold"
         case boldItalic = "BoldItalic"
@@ -25,9 +25,9 @@ enum AppFont {
         case thinItalic = "ThinItalic"
     }
 
-    case stcForward(AppFont.Weight, size: Int)
+  case stcForward(AppFont.Weight, size: Int)
 
-    var font: Font {
+   public var font: Font {
         switch self {
         case .stcForward(let weight, size: let size):
             return Font.custom("STCForward-\(weight.rawValue)", size: CGFloat(size))
@@ -36,13 +36,13 @@ enum AppFont {
 }
 
 extension Text {
-    func appFont(_ font: AppFont) -> Text {
+   public func appFont(_ font: AppFont) -> Text {
         self.font(font.font)
     }
 }
 
 extension View {
-    func appFont(_ font: AppFont) -> some View {
+    public func appFont(_ font: AppFont) -> some View {
         self.font(font.font)
     }
 }

@@ -41,30 +41,27 @@ public struct WarningView: View {
     }
     
     public var body: some View {
-        VStack(alignment: .leading, spacing: 20) {
-            HStack {
+        VStack(alignment: .leading, spacing: 15) {
+            
+            HStack(alignment: .top) {
+                Image(iconName)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 50, height: 50)
                 Spacer()
-                Button(action: onDismiss) {
-                    Image(systemName: "xmark")
-                        .foregroundColor(.gray)
-                        //.padding(8)
-                }
+                    Button(action: onDismiss) {
+                        Image("cross_icon")
+                            .resizable()
+                            .frame(width: 12, height: 12)
+                    }
             }
-            
-            Image(iconName)
-                .resizable()
-                .scaledToFit()
-                .frame(width: 50, height: 50)
-                .foregroundColor(Color.stPrimaryOsais)
-            
+                        
             Text(title)
-                .font(.title2)
-                .bold()
-                .multilineTextAlignment(.center)
+                .appFont(.stcForward(.medium, size: 18))
+                .foregroundColor(Color.darkGrayTitleColor)
             
             Text(message)
-                .font(.body)
-                .multilineTextAlignment(.leading)
+                .subtitleTextStyle()
             
             VStack(spacing: 12) {
                 
@@ -82,13 +79,14 @@ public struct WarningView: View {
         }
         .padding()
         .background(Color.white)
+        .clipShape(RoundedRectangle(cornerRadius: 16))
     }
 }
 
 #Preview {
     @State var showPopup: Bool = true
     WarningView(
-        iconName: "error_icon",
+        iconName: "cross_icon",
         title: "Security Error",
         message: "Your action was successful Your action was successful Your action was successful Your action was successful",
         primaryButtonTitle: "Continue",
@@ -105,18 +103,4 @@ public struct WarningView: View {
             print("Dismiss tapped")
             showPopup = false
         })
-    
-//    WarningView(
-//        iconName: "error_icon",
-//        title: "Security Error",
-//        message: "Your action was successful Your action was successful Your action was successful Your action was successful",
-//        primaryButtonTitle: "Continue",
-//        onPrimary: {
-//            print("Primary tapped")
-//            showPopup = false
-//        },
-//        onDismiss: {
-//            print("Dismiss tapped")
-//            showPopup = false
-//        })
 }
