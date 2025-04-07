@@ -6,8 +6,8 @@ import PackageDescription
 let package = Package(
     name: "CustomModifiers",
     platforms: [
-            .iOS(.v15),     // iOS 14+
-            .macOS(.v12) // macOS 10.15+
+            .iOS(.v16),     // iOS 14+
+            .macOS(.v13) // macOS 10.15+
         ],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
@@ -21,6 +21,5 @@ let package = Package(
         .target(
             name: "CustomModifiers",
             resources: [.process("Resources")]),
-
     ]
 )

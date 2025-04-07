@@ -50,7 +50,7 @@ public struct WarningView: View {
                     .frame(width: 50, height: 50)
                 Spacer()
                     Button(action: onDismiss) {
-                        Image("cross_icon")
+                        Image("cross_icon", bundle: .module)
                             .resizable()
                             .frame(width: 12, height: 12)
                     }

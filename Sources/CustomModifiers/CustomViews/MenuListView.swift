@@ -35,7 +35,7 @@ public struct MenuListView: View {
                 Spacer()
                 
                     Button(action: onDismiss) {
-                        Image("cross_icon")
+                        Image("cross_icon", bundle: .module)
                             .resizable()
                             .frame(width: 12, height: 12)
                     }

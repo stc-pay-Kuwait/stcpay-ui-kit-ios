@@ -51,7 +51,7 @@ public struct CustomNavBar: View {
                 } else {
                     Spacer().frame(width: 20)
                 }
-            }.frame(width: .infinity, height: 20)
+            }.frame(maxWidth: .infinity, maxHeight: 20)
         }
     }
 }
