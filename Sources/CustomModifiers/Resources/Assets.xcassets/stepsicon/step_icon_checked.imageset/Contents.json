@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "step_icon_checked.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
