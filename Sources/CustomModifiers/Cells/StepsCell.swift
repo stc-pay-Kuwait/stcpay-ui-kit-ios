@@ -21,12 +21,12 @@ public struct StepsCell: View {
     
     public var body: some View {
         HStack(alignment: .top, spacing: 12) {
-            VStack{
+            VStack(){
                 icon
                     .frame(width: 20, height: 20)
                 
                 Rectangle()
-                    .frame(width: 2, height: subtitleHeight)
+                    .frame(width: 2)
                     .foregroundColor(Color.optionsBorderGray)
                     .cornerRadius(2)
             }
@@ -39,17 +39,13 @@ public struct StepsCell: View {
                 Text(subtitle)
                     .appFont(.stcForward(.regular, size: 15))
                     .foregroundColor(textColorSubtitle)
-                    .background(
-                        GeometryReader { geo in
-                            Color.clear
-                                .onAppear {
-                                    subtitleHeight = geo.size.height
-                                }
-                        }
-                    )
             }
+            .padding(.top, 4)
+            .padding(.bottom)
+            .padding(.trailing)
         }
-        .padding(.vertical, 12)
+        .frame(height: 72)
+        .padding(.vertical, 5)
     }
     
     public var icon: some View {
@@ -91,13 +87,13 @@ public struct StepsCell: View {
 //            subtitle: "Verify phone number & set passcode Verify phone number & set passcode Verify phone number & set passcode ",
 //            state: .checked
 //        )
-//        Divider()
+//      //  Divider()
 //        StepsCell(
-//            title: "title",
+//            title: "Title",
 //            subtitle: "subtitle",
 //            state: .current
 //        )
-//        Divider()
+//      //  Divider()
 //        StepsCell(
 //            title: "Answer simple questions",
 //            subtitle: "Provide further details about yourself",
