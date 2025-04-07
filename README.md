@@ -8,6 +8,8 @@ A Swift Package for reusable SwiftUI components, including button and text field
 - **Buttons with Icons:** Support for left or right-positioned icons
 - **Custom TextField Styles:** Adds padding, rounded borders, and optional icons
 - **Custom Views for Selection Controls:** Reusable Toggle, Checkbox, and Radio Button components
+- **Custom HeaderViews:** Header navigation bar with Back button, options button
+- **Custom bottom bar content:** Bottom bar for options and Warnings or Error
 
 
 
@@ -90,4 +92,70 @@ var body: some View {
 | Buttons | Textfields | OptionFields |
 |---------|------------|--------------|
 | ![Buttons](./screenshots/button.png) | ![TextFields](./screenshots/textfield.png) | ![OptionFields](./screenshots/optionfields.png) |
+
+### Custom Header Items
+
+Use options header fields for Navigation bar and Title and SubTitle Textviews.
+
+```swift
+VStack(alignment: .leading ,spacing: 15){
+//Custom Navigation bar with click listener
+            CustomNavBar(showBackButton: true, onBack: {
+                print("on Back pressed")
+                showWarning = true
+            }, showOptionsButton: true) {
+                print("on menu pressed")
+                showMenu = true
+            }
+//Custom Title and subtitle bar.
+            VStack(alignment: .leading){
+                CustomTitleBar(title: "Employement Status", subtitle: "This is the subtitle i want to test it out This is the subtitle i want to test it out")
+            }
+}
+```
+
+### Custom Bottom Sheet
+
+Use options header fields for Navigation bar and Title and SubTitle Textviews.
+
+```swift
+Content.
+ .sheet(isPresented: $showMenu) {
+            MenuListView(
+                title: "Menu",
+                items: menuItems,
+                onSelect: { selected in
+                    showMenu = false
+                },
+                onDismiss: {
+                    showMenu = false
+                }
+            )
+        }
+        
+        .sheet(isPresented: $showWarning) {
+                WarningView(
+                    iconName: "error_icon",
+                    title: "Success",
+                    message: "Your action was successful Your action was successful Your action was successful Your action was successful",
+                    primaryButtonTitle: "Continue",
+                    onPrimary: {
+                        showWarning = false
+                    },
+                    secondaryButtonTitle: "Cancel",
+                    onSecondary: {
+                        showWarning = false
+                    },
+                    onDismiss: {
+                        showWarning = false
+                    }
+                )
+        }
+
+```
+
+| HeaderView | Option Sheet | Alert Sheet |
+|---------|------------|--------------|
+| ![Buttons](./screenshots/button.png) | ![TextFields](./screenshots/textfield.png) | ![OptionFields](./screenshots/optionfields.png) |
+
 
