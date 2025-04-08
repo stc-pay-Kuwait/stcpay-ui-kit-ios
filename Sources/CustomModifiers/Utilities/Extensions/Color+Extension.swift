@@ -52,6 +52,9 @@ public extension Color {
     static var grayIconColor: Color {
         Color("grayIconColor", bundle: .module)
     }
+    static var utilityGreen: Color {
+        Color("utilityGreen", bundle: .module)
+    }
 }
 
 

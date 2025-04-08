@@ -21,9 +21,20 @@ public struct SubtitleTextModifier: ViewModifier {
             .appFont(.stcForward(.regular, size: 16))
             .foregroundColor(Color.grayIconColor)
             .multilineTextAlignment(.leading)
+            .lineSpacing(6)
     }
 }
 
+public struct BodyTextModifier: ViewModifier {
+    public func body(content: Content) -> some View {
+        content
+            .appFont(.stcForward(.regular, size: 14))
+            .foregroundStyle(Color.textSecondaryGray)
+            .multilineTextAlignment(.leading)
+            .lineSpacing(6)
+    }
+}
+    
 
  public extension View {
      func titleTextStyle() -> some View {
@@ -32,5 +43,9 @@ public struct SubtitleTextModifier: ViewModifier {
 
      func subtitleTextStyle() -> some View {
         self.modifier(SubtitleTextModifier())
+    }
+     
+    func bodyTextStyle() -> some View {
+        self.modifier(BodyTextModifier())
     }
 }

@@ -19,7 +19,7 @@ public struct TextfieldModifier: ViewModifier{
                 iconLeft
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 15, height: 15)
+                    .frame(width: 20, height: 20)
                     .foregroundColor(textFieldStyle.textColor)
                     .lineLimit(1)
                     .padding(.leading, 16)
@@ -35,7 +35,7 @@ public struct TextfieldModifier: ViewModifier{
                 iconRight
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 15, height: 15)
+                    .frame(width: 20, height: 20)
                     .foregroundColor(textFieldStyle.textColor)
                     .lineLimit(1)
                     .padding(.trailing, 16)
