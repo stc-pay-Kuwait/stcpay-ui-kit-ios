@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CheckboxBodyRightView: View {
+public struct CheckboxBodyRightView: View {
     let title: String
     @Binding var isSelected: Bool
     
