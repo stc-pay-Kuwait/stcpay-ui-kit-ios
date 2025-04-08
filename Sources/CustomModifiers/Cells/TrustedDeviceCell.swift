@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TrustedDeviceCell: View {
+public struct TrustedDeviceCell: View {
     
     public let deviceName: String
     
@@ -15,7 +15,7 @@ struct TrustedDeviceCell: View {
         self.deviceName = deviceName
     }
     
-    var body: some View {
+    public var body: some View {
         ZStack{
             HStack(spacing: 12){
                 HStack(alignment: .center, spacing: 0) {
