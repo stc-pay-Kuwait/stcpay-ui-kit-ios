@@ -26,19 +26,19 @@ public struct CheckboxBodyRightView: View {
                         isSelected.toggle()
                     }) {
                         ZStack {
-                            RoundedRectangle(cornerRadius: 4)
-                                .stroke(Color.textSecondaryGray)
-                                .frame(width: 16, height: 16)
+                            if !isSelected{
+                                RoundedRectangle(cornerRadius: 4)
+                                    .stroke(Color.textSecondaryGray)
+                                    .frame(width: 16, height: 16)
+                            }
                             if isSelected {
                                 RoundedRectangle(cornerRadius: 4)
                                     .fill(Color.stPrimaryOsais)
                                     .frame(width: 16, height: 16)
                                 Image("check_icon", bundle: Bundle.module)
                                     .frame(width: 12, height: 12, alignment: .center)
-                                    .foregroundColor(Color.white)
                             }
                         }
-                        .padding(2)
                         .offset(y: title.isSingleLine ? 0 : 5)
                     }
                 }
@@ -54,8 +54,8 @@ public struct CheckboxBodyRightView: View {
     }
 }
 
-//#Preview {
-//    @State var isSelected: Bool = true
-//    CheckboxBodyRightView(title: "Enable Notifications Enable Notifications Enable Notifications Enable Notifications Enable Notifications Enable Notifications Enable Notifications",  isSelected: $isSelected)
-//    CheckboxBodyRightView(title: "Enable Notifications Enable",  isSelected: $isSelected)
-//}
+#Preview {
+    @State var isSelected: Bool = true
+    CheckboxBodyRightView(title: "Enable Notifications Enable Notifications Enable Notifications Enable Notifications Enable Notifications Enable Notifications Enable Notifications",  isSelected: $isSelected)
+    CheckboxBodyRightView(title: "Enable Notifications Enable",  isSelected: $isSelected)
+}
