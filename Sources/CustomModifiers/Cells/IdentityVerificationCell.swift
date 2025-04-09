@@ -78,8 +78,15 @@ public struct IdentityVerificationCell: View {
 
 public struct IdentityVerification: Identifiable {
     public let id = UUID()
-    let image: String
-    let title: String
-    let subtitle: String
-    let tagText: String?
+    public let image: String
+    public let title: String
+    public let subtitle: String
+    public let tagText: String?
+    
+    public init(image: String, title: String, subtitle: String, tagText: String? = nil) {
+        self.image = image
+        self.title = title
+        self.subtitle = subtitle
+        self.tagText = tagText
+    }
 }
