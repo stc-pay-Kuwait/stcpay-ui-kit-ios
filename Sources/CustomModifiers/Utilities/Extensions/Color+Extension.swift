@@ -55,6 +55,12 @@ public extension Color {
     static var utilityGreen: Color {
         Color("utilityGreen", bundle: .module)
     }
+    static var purpleBody: Color {
+        Color("purpleBody", bundle: .module)
+    }
+    static var purpleBorder: Color {
+        Color("purpleBorder", bundle: .module)
+    }
 }
 
 

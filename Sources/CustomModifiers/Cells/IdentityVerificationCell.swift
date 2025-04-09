@@ -53,28 +53,28 @@ public struct IdentityVerificationCell: View {
             if let tagText = identityVerification.tagText, !tagText.isEmpty {
                 Text(tagText)
                     .appFont(.stcForward(.medium, size: 11))
-                    .foregroundColor(Color.stPrimaryOsais)
+                    .foregroundColor(Color.white)
                     .padding(.horizontal, 10)
                     .padding(.vertical, 5)
                     .overlay {
                         RoundedRectangle(cornerRadius: 6)
-                            .stroke(Color.stPrimaryOsais, lineWidth: 1.5)
+                            .stroke(Color.purpleBorder, lineWidth: 1.5)
                     }
-                    .background(Color.white)
+                    .background(Color.purpleBody)
+                    .cornerRadius(6)
                     .offset(x: -24, y: -10)
             }
         }
-        .padding()
     }
 }
 
-//#Preview {
-//    VStack {
-//        IdentityVerificationCell(identityVerification: IdentityVerification(image: "id_img", title: "ID Proof", subtitle: "Capture a picture of your Kuwait Civil ID carte", tagText: "Faster"))
-//        
-//        IdentityVerificationCell(identityVerification: IdentityVerification(image: "id_card", title: "ID Proof", subtitle: "Capture a picture of your Kuwait Civil ID carte", tagText: nil))
-//    }
-//}
+#Preview {
+    VStack {
+        IdentityVerificationCell(identityVerification: IdentityVerification(image: "id_img", title: "ID Proof", subtitle: "Capture a picture of your Kuwait Civil ID carte", tagText: "Faster"))
+        
+        IdentityVerificationCell(identityVerification: IdentityVerification(image: "id_card", title: "ID Proof", subtitle: "Capture a picture of your Kuwait Civil ID carte", tagText: nil))
+    }
+}
 
 public struct IdentityVerification: Identifiable {
     public let id = UUID()
