@@ -9,14 +9,14 @@ import SwiftUI
 
 public struct IdentityVerificationCell: View {
     public var identityVerification: IdentityVerification
-    public let onTap: () -> Void
-    public init(identityVerification: IdentityVerification, onTap: @escaping () -> Void) {
+    public let onTap: (Int) -> Void
+    public init(identityVerification: IdentityVerification, onTap: @escaping (Int) -> Void) {
         self.identityVerification = identityVerification
         self.onTap = onTap
     }
     public var body: some View {
         Button(action: {
-            onTap()
+            onTap(identityVerification.id)
         }){
             ZStack(alignment: .topTrailing) {
                 HStack(alignment: .top, spacing: 8) {
@@ -76,22 +76,25 @@ public struct IdentityVerificationCell: View {
 
 //#Preview {
 //    VStack {
-//        IdentityVerificationCell(identityVerification: IdentityVerification(image: "id_img", title: "ID Proof", subtitle: "Capture a picture of your Kuwait Civil ID carte", tagText: "Faster")) {
-//            print("Click on list")
+//        IdentityVerificationCell(identityVerification: IdentityVerification(id: 0, image: "id_img", title: "ID Proof", subtitle: "Capture a picture of your Kuwait Civil ID carte", tagText: "Faster")) { id in
+//            print("Click on list \(id)")
 //        }
 //        
-////        IdentityVerificationCell(identityVerification: IdentityVerification(image: "id_card", title: "ID Proof", subtitle: "Capture a picture of your Kuwait Civil ID carte", tagText: nil))
+//        IdentityVerificationCell(identityVerification: IdentityVerification(id: 1,image: "id_card", title: "ID Proof", subtitle: "Capture a picture of your Kuwait Civil ID carte", tagText: nil)){ id in
+//            print("Click on list \(id)")
+//        }
 //    }
 //}
 
 public struct IdentityVerification: Identifiable {
-    public let id = UUID()
+    public let id: Int
     public let image: String
     public let title: String
     public let subtitle: String
     public let tagText: String?
     
-    public init(image: String, title: String, subtitle: String, tagText: String? = nil) {
+    public init(id: Int, image: String, title: String, subtitle: String, tagText: String? = nil) {
+        self.id = id
         self.image = image
         self.title = title
         self.subtitle = subtitle
