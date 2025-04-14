@@ -6,16 +6,51 @@
 //
 import Foundation
 import SwiftUI
+public enum MenuListType: Int, Identifiable {
+    case support
+    case login
+    case changeLanguage
+    case quit
+    
+    public var id: Int { rawValue }
+    
+    var title: String {
+        switch self {
+        case .support:
+            "Support"
+        case .login:
+            "Login"
+        case .changeLanguage:
+            "Change Language"
+        case .quit:
+            "Quit"
+        }
+    }
+    
+    var image: String {
+        switch self {
+        case .support:
+            "support"
+        case .login:
+            "login"
+        case .changeLanguage:
+            "changeLanguage"
+        case .quit:
+            "logOut"
+        }
+    }
+}
+
 public struct MenuListView: View {
     public var title: String = "Menu"
-    public let items: [MenuItem]
-    public let onSelect: (MenuItem) -> Void
+    public let items: [MenuListType]
+    public let onSelect: (MenuListType) -> Void
     public let onDismiss: () -> Void
 
     public init(
         title: String = "Menu",
-        items: [MenuItem],
-        onSelect: @escaping (MenuItem) -> Void,
+        items: [MenuListType],
+        onSelect: @escaping (MenuListType) -> Void,
         onDismiss: @escaping () -> Void
     ) {
         self.title = title
@@ -45,12 +80,13 @@ public struct MenuListView: View {
             Divider()
 
             // List items
+//            ForEach(items) { item in
             ForEach(items) { item in
                 Button(action: {
                     onSelect(item)
                 }) {
                     HStack(spacing: 12) {
-                        Image(item.iconName)
+                        Image(item.image, bundle: .module)
                             .resizable()
                             .frame(width: 24, height: 24)
                         
@@ -71,21 +107,27 @@ public struct MenuListView: View {
 }
 
 #Preview {
-    MenuListView(items: [MenuItem(title: "Support", iconName: "error_icon"), MenuItem(title: "System", iconName: "error_icon"), MenuItem(title: "Error", iconName: "error_icon"), MenuItem(title: "Warning", iconName: "error_icon")]) { item in
-        print("Clicked item \(item.title)")
+//    MenuListView(items: [MenuItem(title: "Support", iconName: "error_icon"), MenuItem(title: "System", iconName: "error_icon"), MenuItem(title: "Error", iconName: "error_icon"), MenuItem(title: "Warning", iconName: "error_icon")]) { item in
+//        print("Clicked item \(item.title)")
+//    } onDismiss: {
+//        print("Dismiss Tapped")
+//    }
+    MenuListView(items: [.support,.login,.changeLanguage,.quit]) { menuListType in
+        print(menuListType.title)
     } onDismiss: {
-        print("Dismiss Tapped")
+        
     }
+
 
 }
 
-public struct MenuItem: Identifiable, Hashable {
-    public let id = UUID()
-    public let title: String
-    public let iconName: String
-
-    public init(title: String, iconName: String) {
-        self.title = title
-        self.iconName = iconName
-    }
-}
+//public struct MenuItem: Identifiable, Hashable {
+//    public let id = UUID()
+//    public let title: String
+//    public let iconName: String
+//
+//    public init(title: String, iconName: String) {
+//        self.title = title
+//        self.iconName = iconName
+//    }
+//}
