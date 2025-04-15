@@ -8,10 +8,10 @@
 import SwiftUI
 
 public struct CheckboxBodyRightView: View {
-    let title: String
+    let title: AttributedString
     @Binding var isSelected: Bool
     
-    public init(title: String, isSelected: Binding<Bool>) {
+    public init(title: AttributedString, isSelected: Binding<Bool>) {
            self.title = title
            self._isSelected = isSelected
        }
@@ -20,7 +20,7 @@ public struct CheckboxBodyRightView: View {
         Button(action: {
             isSelected.toggle()
         }) {
-            HStack(alignment: title.isSingleLine ? .center : .firstTextBaseline,  spacing: 8) { // Dynamically adjust alignment
+            HStack(alignment: title.description.isSingleLine ? .center : .firstTextBaseline,  spacing: 8) { // Dynamically adjust alignment
                 ZStack {
                     Button(action: {
                         isSelected.toggle()
@@ -39,7 +39,7 @@ public struct CheckboxBodyRightView: View {
                                     .frame(width: 12, height: 12, alignment: .center)
                             }
                         }
-                        .offset(y: title.isSingleLine ? 0 : 5)
+                        .offset(y: title.description.isSingleLine ? 0 : 5)
                     }
                 }
                 
@@ -57,5 +57,24 @@ public struct CheckboxBodyRightView: View {
 #Preview {
     @State var isSelected: Bool = true
     CheckboxBodyRightView(title: "Enable Notifications Enable Notifications Enable Notifications Enable Notifications Enable Notifications Enable Notifications Enable Notifications",  isSelected: $isSelected)
-    CheckboxBodyRightView(title: "Enable Notifications Enable",  isSelected: $isSelected)
+//    CheckboxBodyRightView(title: getCheckBoxAttributedString(),  isSelected: $isSelected)
 }
+
+//@MainActor
+//func getCheckBoxAttributedString() -> AttributedString {
+//    var string = AttributedString("By providing the mobile number, I hereby agree and accept the Terms and Conditions and Privacy Policy")
+//    
+//    if let range = string.range(of: "Terms and Conditions") {
+//        string[range].foregroundColor = .stPrimaryOsais
+//        string[range].font = AppFont.stcForward(.bold, size: 13).font
+//        string[range].link = URL(string: "t_and_c_url")
+//    }
+//
+//    if let range = string.range(of: "Privacy Policy") {
+//        string[range].foregroundColor = .stPrimaryOsais
+//        string[range].font = AppFont.stcForward(.bold, size: 13).font
+//        string[range].link = URL(string: "t_and_c_url")
+//    }
+//
+//    return string
+//}
