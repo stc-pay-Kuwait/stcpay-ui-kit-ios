@@ -38,28 +38,23 @@ public struct RadioButton: View {
                 
                 Spacer()
                 
+                
                 ZStack {
-                    Button(action: {
-                        selectedID = id
-                    }) {
-                        ZStack {
-                            Circle()
-                                .stroke(Color.borderGrayPrimary, lineWidth: 1)
-                                .frame(width: 20, height: 20)
-                            
-                            if isSelected {
-                                Circle()
-                                    .fill(Color.stPrimaryOsais)
-                                    .frame(width: 20, height: 20)
-                                Circle()
-                                    .fill(Color.white)
-                                    .frame(width: 8, height: 8)
-                            }
-                        }
+                    Circle()
+                        .stroke(Color.borderGrayPrimary, lineWidth: 1)
                         .frame(width: 20, height: 20)
-                        .offset(y: title.isSingleLine ? 0 : 5)
+                    
+                    if isSelected {
+                        Circle()
+                            .fill(Color.stPrimaryOsais)
+                            .frame(width: 20, height: 20)
+                        Circle()
+                            .fill(Color.white)
+                            .frame(width: 8, height: 8)
                     }
                 }
+                .frame(width: 20, height: 20)
+                .offset(y: title.isSingleLine ? 0 : 5)
             }
             .frame(minHeight: 55)
             .padding(.horizontal, 10)
@@ -73,9 +68,9 @@ public struct RadioButton: View {
     }
 }
 
-//#Preview {
-//    @State var selectedRadioID: String?
-//    RadioButton(title: "Enable Notifications Enable Notifications Enable Notifications Enable Notifications Enable Notifications Enable Notifications Enable Notifications",  id: "option1", selectedID: $selectedRadioID)
-//    RadioButton(title: "Enable Notifications Enable Notifications Enable Notifications",  id: "option2", selectedID: $selectedRadioID)
-//    RadioButton(title: "Enable Notifications Enable Notifications",  id: "option3", selectedID: $selectedRadioID)
-//}
+#Preview {
+    @State var selectedRadioID: String?
+    RadioButton(title: "Enable Notifications Enable Notifications Enable Notifications Enable Notifications Enable Notifications Enable Notifications Enable Notifications",  id: "option1", selectedID: $selectedRadioID)
+    RadioButton(title: "Enable Notifications Enable Notifications Enable Notifications",  id: "option2", selectedID: $selectedRadioID)
+    RadioButton(title: "Enable Notifications Enable Notifications",  id: "option3", selectedID: $selectedRadioID)
+}
