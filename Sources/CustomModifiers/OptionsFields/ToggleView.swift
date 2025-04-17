@@ -59,6 +59,7 @@ public struct ToggleView: View {
             .cornerRadius(8)
             .overlay(
                 RoundedRectangle(cornerRadius: 10)
+                    .inset(by: 0.5)
                     .stroke(Color.optionsBorderGray, lineWidth: 1)
             )
         }
@@ -66,7 +67,8 @@ public struct ToggleView: View {
 }
 
 //#Preview {
-//    @Previewable @State var isOn = false
+//    @State var isOn = false
 //    ToggleView(title: "Enable Notifications Enable Notifications Enable Notifications Enable Notifications Enable Notifications Enable Notifications Enable Notifications",  isOn: $isOn)
 //    ToggleView(title: "Enable Notifications",  isOn: $isOn)
+//        .padding()
 //}

@@ -60,6 +60,7 @@ public struct CheckboxView: View {
             .cornerRadius(8)
             .overlay(
                 RoundedRectangle(cornerRadius: 10)
+                    .inset(by: 0.5)
                     .stroke(Color.optionsBorderGray, lineWidth: 1)
             )
         }
@@ -69,8 +70,9 @@ public struct CheckboxView: View {
 
 
 //#Preview {
-//    @Previewable @State var isSelected: Bool = false
+//     @State var isSelected: Bool = false
 //    CheckboxView(title: "Enable Notifications Enable Notifications Enable Notifications Enable Notifications Enable Notifications Enable Notifications Enable Notifications",  isSelected: $isSelected)
+//        .padding()
 //    CheckboxView(title: "Enable Notifications Enable", isSelected: .constant(true))
 //    CheckboxView(title: "Enable Notifications Enable Notifications",  isSelected: .constant(true))
 //}

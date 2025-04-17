@@ -62,6 +62,7 @@ public struct RadioButton: View {
             .cornerRadius(8)
             .overlay(
                 RoundedRectangle(cornerRadius: 10)
+                    .inset(by: 0.5)
                     .stroke(Color.optionsBorderGray, lineWidth: 1)
             )
         }
